@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --panel-border: rgba(31, 27, 22, 0.12);
+    --panel-shadow: 0 12px 30px rgba(219, 95, 34, 0.08);
+    --muted-text: rgba(31, 27, 22, 0.62);
+}
+
+body {
+    font-family: "Figtree", sans-serif;
+    color: #1f1b16;
+}
+
+.panel-card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    box-shadow: var(--panel-shadow);
+}
+
+.muted {
+    color: var(--muted-text);
+}
+
+.table> :not(caption)>*>* {
+    border-color: rgba(31, 27, 22, 0.08);
+}
