@@ -1,7 +1,6 @@
 ﻿@extends('layouts.app')
 
 @section('title', 'Data Pembeli')
-@section('page_title', 'Data Pembeli dan Pembayaran')
 
 @php
     $baseTotal = (float) $checkout['total'];

@@ -1,7 +1,6 @@
 ﻿@extends('layouts.app')
 
 @section('title', 'Tambah Pembelian')
-@section('page_title', 'Tambah Pembelian')
 
 @section('content')
     <form method="POST" action="{{ route('purchases.prepare') }}" class="panel-card p-3 p-lg-4">
@@ -18,7 +17,7 @@
                 <div class="col-md-6 col-xl-4">
                     <div class="card h-100" style="border-radius:14px; border:1px solid #e7d8c8;">
                         @if ($product->image_path)
-                            <img src="{{ route('media.show', ['path' => $product->image_path]) }}" class="card-img-top"
+                            <img src="{{ asset('storage/' . $product->image_path) }}" class="card-img-top"
                                 alt="{{ $product->name }}" style="height: 170px; object-fit: cover;">
                         @endif
                         <div class="card-body">

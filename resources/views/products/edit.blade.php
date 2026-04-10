@@ -1,7 +1,6 @@
 ﻿@extends('layouts.app')
 
 @section('title', 'Edit Produk')
-@section('page_title', 'Edit Produk')
 
 @section('content')
     <div class="panel-card p-3 p-lg-4">
@@ -51,7 +50,7 @@
             @if ($product->image_path)
                 <div class="col-md-4">
                     <div class="card" style="border-radius:12px; overflow:hidden;">
-                        <img src="{{ route('media.show', ['path' => $product->image_path]) }}" alt="{{ $product->name }}"
+                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}"
                             style="height:180px; object-fit: cover;">
                     </div>
                 </div>

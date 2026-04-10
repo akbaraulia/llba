@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('title', 'System Settings')
-@section('page_title', 'System Settings')
 
 @section('content')
     <div class="panel-card p-3 p-lg-4">
@@ -13,7 +12,7 @@
                 <label class="form-label">1 Poin = Berapa Rupiah <span class="text-danger">*</span></label>
                 <input type="number" min="0.01" step="0.01" name="point_redeem_value"
                     class="form-control @error('point_redeem_value') is-invalid @enderror"
-                    value="{{ old('point_redeem_value', $settings->point_redeem_value) }}" required>
+                    value="{{ old('point_redeem_value', (float) $settings->point_redeem_value) }}" required>
                 @error('point_redeem_value')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @else
@@ -26,7 +25,7 @@
                 <label class="form-label">1 Poin Didapat per Rupiah <span class="text-danger">*</span></label>
                 <input type="number" min="0.01" step="0.01" name="point_earn_spend"
                     class="form-control @error('point_earn_spend') is-invalid @enderror"
-                    value="{{ old('point_earn_spend', $settings->point_earn_spend) }}" required>
+                    value="{{ old('point_earn_spend', (float) $settings->point_earn_spend) }}" required>
                 @error('point_earn_spend')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @else
@@ -39,7 +38,8 @@
                 <label class="form-label">Default Maks Pemakaian Poin (%) <span class="text-danger">*</span></label>
                 <input type="number" min="0" max="100" step="0.01" name="default_max_redeem_percentage"
                     class="form-control @error('default_max_redeem_percentage') is-invalid @enderror"
-                    value="{{ old('default_max_redeem_percentage', $settings->default_max_redeem_percentage) }}" required>
+                    value="{{ old('default_max_redeem_percentage', (float) $settings->default_max_redeem_percentage) }}"
+                    required>
                 @error('default_max_redeem_percentage')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
                 @else

@@ -1,7 +1,6 @@
 ﻿@extends('layouts.app')
 
 @section('title', 'Edit Pengguna')
-@section('page_title', 'Edit Pengguna')
 
 @section('content')
     <div class="panel-card p-3 p-lg-4">

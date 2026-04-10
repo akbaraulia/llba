@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('title', 'Struk Pembelian')
-@section('page_title', 'Struk Pembelian')
 
 @section('content')
     <div class="row justify-content-center">

@@ -7,41 +7,17 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SystemSettingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/media/{path}', function (string $path) {
-    $disk = Storage::disk('public');
-    abort_unless($disk->exists($path), 404);
-
-    $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-    $mime = match ($extension) {
-        'jpg', 'jpeg' => 'image/jpeg',
-        'png' => 'image/png',
-        'gif' => 'image/gif',
-        'webp' => 'image/webp',
-        default => 'application/octet-stream',
-    };
-
-    return response($disk->get($path), 200)
-        ->header('Content-Type', $mime)
-        ->header('Cache-Control', 'public, max-age=3600');
-})->where('path', '.*')->name('media.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-
     Route::get('/purchases', [PurchaseController::class, 'index'])->name('purchases.index');
     Route::get('/purchases/export', [PurchaseController::class, 'export'])->name('purchases.export');
     Route::get('/purchases/{purchase}/receipt/pdf', [PurchaseController::class, 'receiptPdf'])->name('purchases.receipt.pdf');
